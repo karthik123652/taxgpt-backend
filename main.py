@@ -20,6 +20,17 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+@app.get('/test')
+async def test_endpoint():
+    """Endpoint for basic API health check"""
+    return {
+        "status": "success",
+        "message": "API is working!",
+        "endpoints": {
+            "chat_advice": "/chat/advice (POST)",
+            "root": "/ (GET)"
+        }
+    }
 
 @app.get('/')
 async def root():
